@@ -5,21 +5,25 @@
 
 Console.Clear();
 
-double GetArray(int size)
+double randomDouble(int minDouble, int maxDouble)   //генерируем  случайные дробные числа
 {
-  double[] array= new double[size];
-  Random rnd = new Random();
+      double randomNumbers=new  Random().NextDouble()*(maxDouble-minDouble)*maxDouble;
+      return randomNumbers;
+}
+double[] RandomArray(int size, int minDouble, int maxDouble)
+{
+         double[]array= new double [size];
+         for (int i = 0; i < size; i++)
+         {
+            array[i] = randomDouble( minDouble,maxDouble );
+         }
+         return array;
+         
+}
 
-    for(int j = 0; j < size; j++)
-{    
-    Console.WriteLine(rnd.NextDouble());
-}
-return array;
-}
-double[] res=GetArray(10);
-/*
-double max()
-{   int count= array.length;
+
+double max(double[]array)
+{   int count= array.Length;
     double max= array[0];
      for (int i = 0; i < count; i++)
      {
@@ -32,8 +36,8 @@ double max()
 
 }
 
-double min()
-{   int count= array.length;
+double min(double[]array)
+{   int count= array.Length;
     double min= array[0];
      for (int i = 0; i < count; i++)
      {
@@ -45,5 +49,7 @@ double min()
      return min;
 
 }
-double result=max(array)-min(array);
-Console.WriteLine($"Ответ {result}");*/
+double[]res=RandomArray(6,-5,10);
+Console.WriteLine(String.Join(" ", res));
+double result=max(res)-min(res);
+Console.WriteLine($"Ответ {result}");
